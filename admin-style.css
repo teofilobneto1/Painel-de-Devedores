@@ -1,0 +1,848 @@
+* {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7f5f2;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* =========================
+       LOGIN
+       ========================= */
+
+    #login-area {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 400px;
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
+    .login-card h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .marca-destaque {
+      color: #c9a227;
+    }
+
+    .login-card p {
+      text-align: center;
+      color: #777;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+
+    /* =========================
+       CABEÇALHO
+       ========================= */
+
+    .admin-header {
+      background: #171717;
+      color: white;
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+    }
+
+    .admin-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+    .admin-header h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+    }
+
+    .btn-sair {
+      border: 1px solid #c9a227;
+      background: transparent;
+      color: #c9a227;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-sair:hover {
+      background: #c9a227;
+      color: white;
+    }
+
+    /* =========================
+       PAINEL
+       ========================= */
+
+    #painel {
+      display: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .titulo {
+      margin-bottom: 25px;
+    }
+
+    .titulo h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .titulo p {
+      color: #6b6b6b;
+    }
+
+    /* =========================
+       NAVEGAÇÃO
+       ========================= */
+
+    .admin-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .admin-nav button {
+      border: 1px solid #ddd6cb;
+      background: white;
+      color: #444;
+      padding: 10px 15px;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+
+    .admin-nav button:hover,
+    .admin-nav button.ativo {
+      background: #171717;
+      color: white;
+      border-color: #171717;
+    }
+
+    .secao-admin {
+      display: none;
+    }
+
+    .secao-admin.ativa {
+      display: block;
+    }
+
+    /* =========================
+       CARDS
+       ========================= */
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+      margin-bottom: 25px;
+    }
+
+    .card h3 {
+      margin-bottom: 20px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+    }
+
+    /* =========================
+       CAMPOS
+       ========================= */
+
+    .campo {
+      margin-bottom: 18px;
+    }
+
+    .campo label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .campo input,
+    .campo select,
+    .campo textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #ddd6cb;
+      border-radius: 10px;
+      font-size: 15px;
+      background: white;
+    }
+
+    .campo textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .campo input:focus,
+    .campo select:focus,
+    .campo textarea:focus {
+      outline: none;
+      border-color: #c9a227;
+      box-shadow: 0 0 0 3px rgba(201,162,39,0.15);
+    }
+
+    .linha {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .linha-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    /* =========================
+       BOTÕES
+       ========================= */
+
+    .btn {
+      width: 100%;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      background: #c9a227;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #a8841a;
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-secundario {
+      border: none;
+      background: #171717;
+      color: white;
+      padding: 10px 13px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .btn-venda {
+      border: none;
+      background: #26733a;
+      color: white;
+      padding: 9px 12px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    .btn-entrada {
+      border: none;
+      background: #3867b0;
+      color: white;
+      padding: 9px 12px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    .btn-editar {
+      border: none;
+      background: #c9a227;
+      color: white;
+      padding: 9px 13px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    .btn-excluir {
+      border: none;
+      background: #b3261e;
+      color: white;
+      padding: 9px 13px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    .btn-cancelar {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd6cb;
+      background: white;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* =========================
+       DASHBOARD
+       ========================= */
+
+    .filtro-periodo {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .filtro-periodo label {
+      font-weight: bold;
+    }
+
+    .filtro-periodo select {
+      min-width: 220px;
+      padding: 11px 13px;
+      border: 1px solid #ddd6cb;
+      border-radius: 9px;
+      background: white;
+    }
+
+    .indicadores {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .indicador {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+      border-left: 4px solid #c9a227;
+    }
+
+    .indicador small {
+      display: block;
+      color: #777;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .indicador strong {
+      display: block;
+      font-size: 24px;
+    }
+
+    .indicador .positivo {
+      color: #26733a;
+    }
+
+    .indicador .negativo {
+      color: #b3261e;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .ranking {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ranking-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 13px;
+      background: #f8f6f2;
+      border-radius: 10px;
+    }
+
+    .ranking-item strong {
+      display: block;
+    }
+
+    .ranking-item span {
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* =========================
+       BARRAS DO DASHBOARD
+       ========================= */
+
+    .grafico-barras {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .barra-item {
+      display: grid;
+      grid-template-columns: 130px 1fr 60px;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .barra-nome {
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .barra-fundo {
+      height: 10px;
+      background: #eee9e1;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .barra {
+      height: 100%;
+      background: #c9a227;
+      border-radius: 20px;
+    }
+
+    .barra-valor {
+      font-weight: bold;
+      text-align: right;
+      font-size: 13px;
+    }
+
+    /* =========================
+       PRODUTOS
+       ========================= */
+
+    #lista-produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .produto-admin {
+      border: 1px solid #e5dfd6;
+      border-radius: 14px;
+      padding: 15px;
+      background: #fff;
+    }
+
+    .produto-admin img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      background: #f7f5f2;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .produto-admin h4 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 19px;
+      margin-bottom: 5px;
+    }
+
+    .produto-admin .marca {
+      color: #777;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .produto-info {
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .produto-preco {
+      font-size: 18px;
+      font-weight: bold;
+      color: #c9a227;
+      margin-bottom: 5px;
+    }
+
+    .produto-lucro {
+      color: #26733a;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .produto-acoes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .produto-acoes button {
+      width: 100%;
+    }
+
+    .produto-acoes .btn-venda {
+      grid-column: span 1;
+    }
+
+    .produto-status {
+      display: inline-block;
+      padding: 5px 8px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .status-disponivel {
+      background: #e8f6eb;
+      color: #26733a;
+    }
+
+    .status-esgotado {
+      background: #fdecec;
+      color: #b3261e;
+    }
+
+    .status-baixo {
+      background: #fff5db;
+      color: #9a7100;
+    }
+
+    /* =========================
+       HISTÓRICO
+       ========================= */
+
+    .tabela-wrapper {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 750px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 13px 10px;
+      border-bottom: 1px solid #eee7de;
+      font-size: 13px;
+    }
+
+    th {
+      background: #f8f6f2;
+      font-weight: bold;
+    }
+
+    .tipo-venda {
+      color: #26733a;
+      font-weight: bold;
+    }
+
+    .tipo-entrada {
+      color: #3867b0;
+      font-weight: bold;
+    }
+
+    /* =========================
+       AVISOS
+       ========================= */
+
+    .aviso {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .status {
+      margin-top: 7px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .vazio {
+      color: #777;
+      padding: 15px 0;
+    }
+
+    /* =========================
+       MODAIS
+       ========================= */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 999;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .modal-conteudo {
+      width: 100%;
+      max-width: 600px;
+      background: white;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 30px auto;
+    }
+
+    .modal-conteudo h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .modal-botoes {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* =========================
+       IMAGEM
+       ========================= */
+
+    .preview {
+      display: none;
+      margin-top: 15px;
+    }
+
+    .preview img {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 1px solid #ddd6cb;
+      background: #f7f5f2;
+      padding: 8px;
+    }
+
+    .info-imagem {
+      margin-top: 7px;
+      color: #777;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    /* =========================
+       RESPONSIVO
+       ========================= */
+
+    @media (max-width: 900px) {
+      .indicadores {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 15px 50px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .linha,
+      .linha-3 {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .admin-header-inner {
+        align-items: flex-start;
+      }
+
+      .admin-header h1 {
+        font-size: 20px;
+      }
+
+      .indicadores {
+        grid-template-columns: 1fr;
+      }
+
+      .produto-acoes {
+        grid-template-columns: 1fr;
+      }
+
+      .barra-item {
+        grid-template-columns: 90px 1fr 50px;
+      }
+
+      .modal-botoes {
+        flex-direction: column;
+      }
+    }
+
+/* =========================
+   PARCELAMENTO / DEVEDORES
+   ========================= */
+
+.parcelamento-box {
+  background: #f8f6f2;
+  border: 1px solid #e5dfd6;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 10px 0 20px;
+}
+
+.parcelamento-box h4 {
+  margin-bottom: 15px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+}
+
+.status-parcela {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.status-paga {
+  background: #e8f6eb;
+  color: #26733a;
+}
+
+.status-pendente {
+  background: #fff5db;
+  color: #9a7100;
+}
+
+.status-atrasada {
+  background: #fdecec;
+  color: #b3261e;
+}
+
+.devedor-card {
+  border: 1px solid #e5dfd6;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 15px;
+  background: #fff;
+}
+
+.devedor-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.devedor-topo h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  margin-bottom: 5px;
+}
+
+.devedor-valor {
+  color: #b3261e;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.parcela-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f8f6f2;
+  margin-top: 8px;
+}
+
+.parcela-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.parcela-info small {
+  color: #777;
+}
+
+.btn-pagar {
+  border: none;
+  background: #26733a;
+  color: white;
+  padding: 9px 12px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-pagar:hover {
+  background: #1d5c2e;
+}
+
+.resumo-dividas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .resumo-dividas {
+    grid-template-columns: 1fr;
+  }
+
+  .devedor-topo,
+  .parcela-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

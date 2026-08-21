@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Dadal Tailandesas</title>
+  <link rel="stylesheet" href="admin-style.css">
+</head>
+<body>
+<body>
+
+<!-- =====================================================
+     LOGIN
+     ===================================================== -->
+
+<section id="login-area">
+
+  <div class="login-card">
+
+    <h1>
+      Dadal <span class="marca-destaque">Tailandesas</span>
+    </h1>
+
+    <p>
+      Área administrativa
+    </p>
+
+    <form id="form-login">
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Digite seu e-mail"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+
+        <input
+          type="password"
+          id="senha"
+          placeholder="Digite sua senha"
+          required
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="btn"
+        id="btn-login"
+      >
+        Entrar
+      </button>
+
+      <div
+        class="aviso"
+        id="erro-login"
+      ></div>
+
+    </form>
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     PAINEL
+     ===================================================== -->
+
+<section id="painel">
+
+  <header class="admin-header">
+
+    <div class="admin-header-inner">
+
+      <h1>
+        Dadal <span class="marca-destaque">Tailandesas</span> — Admin
+      </h1>
+
+      <button
+        class="btn-sair"
+        id="btn-sair"
+      >
+        Sair
+      </button>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <div class="titulo">
+
+      <h2>
+        Painel administrativo
+      </h2>
+
+      <p>
+        Gestão de produtos, estoque, vendas e resultados.
+      </p>
+
+    </div>
+
+    <!-- =================================================
+         MENU
+         ================================================= -->
+
+    <nav class="admin-nav">
+
+      <button
+        class="ativo"
+        data-secao="dashboard"
+      >
+        Dashboard
+      </button>
+
+      <button
+        data-secao="produtos"
+      >
+        Produtos
+      </button>
+
+      <button
+        data-secao="estoque"
+      >
+        Estoque
+      </button>
+
+      <button
+        data-secao="historico"
+      >
+        Histórico
+      </button>
+
+      <button
+        data-secao="devedores"
+      >
+        Devedores
+      </button>
+
+    </nav>
+
+    <!-- =================================================
+         DASHBOARD
+         ================================================= -->
+
+    <section
+      class="secao-admin ativa"
+      id="secao-dashboard"
+    >
+
+      <div class="card">
+
+        <div class="filtro-periodo">
+
+          <div>
+            <strong>Período dos resultados</strong>
+          </div>
+
+          <select id="filtro-periodo">
+
+            <option value="30">
+              Últimos 30 dias
+            </option>
+
+            <option value="todos">
+              Todo o período
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="indicadores">
+
+        <div class="indicador">
+
+          <small>Faturamento</small>
+
+          <strong id="dash-faturamento">
+            R$ 0,00
+          </strong>
+
+        </div>
+
+        <div class="indicador">
+
+          <small>Lucro</small>
+
+          <strong
+            id="dash-lucro"
+            class="positivo"
+          >
+            R$ 0,00
+          </strong>
+
+        </div>
+
+        <div class="indicador">
+
+          <small>Total gasto</small>
+
+          <strong id="dash-gastos">
+            R$ 0,00
+          </strong>
+
+        </div>
+
+        <div class="indicador">
+
+          <small>Perfumes vendidos</small>
+
+          <strong id="dash-vendidos">
+            0
+          </strong>
+
+        </div>
+
+        <div class="indicador">
+
+          <small>Produtos cadastrados</small>
+
+          <strong id="dash-produtos">
+            0
+          </strong>
+
+        </div>
+
+        <div class="indicador">
+
+          <small>Produtos esgotados</small>
+
+          <strong
+            id="dash-esgotados"
+            class="negativo"
+          >
+            0
+          </strong>
+
+        </div>
+
+        <div class="indicador">
+
+          <small>Estoque baixo</small>
+
+          <strong id="dash-baixo">
+            0
+          </strong>
+
+        </div>
+
+        <div class="indicador">
+
+          <small>Ticket médio</small>
+
+          <strong id="dash-ticket">
+            R$ 0,00
+          </strong>
+
+        </div>
+
+      </div>
+
+      <div class="dashboard-grid">
+
+        <div class="card">
+
+          <h3>
+            Produtos mais vendidos
+          </h3>
+
+          <div
+            class="ranking"
+            id="ranking-produtos"
+          >
+            Carregando...
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Faturamento por produto
+          </h3>
+
+          <div
+            class="grafico-barras"
+            id="grafico-faturamento"
+          >
+            Carregando...
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="dashboard-grid">
+
+        <div class="card">
+
+          <h3>
+            Produtos esgotados
+          </h3>
+
+          <div
+            class="ranking"
+            id="lista-esgotados"
+          >
+            Carregando...
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Estoque baixo
+          </h3>
+
+          <div
+            class="ranking"
+            id="lista-baixo"
+          >
+            Carregando...
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =================================================
+         PRODUTOS
+         ================================================= -->
+
+    <section
+      class="secao-admin"
+      id="secao-produtos"
+    >
+
+      <section class="card">
+
+        <h3>
+          Novo produto
+        </h3>
+
+        <form id="form-produto">
+
+          <div class="campo">
+
+            <label for="nome">
+              Nome do perfume
+            </label>
+
+            <input
+              type="text"
+              id="nome"
+              placeholder="Ex.: Fakhar Silver"
+              required
+            >
+
+          </div>
+
+          <div class="campo">
+
+            <label for="marca">
+              Marca
+            </label>
+
+            <input
+              type="text"
+              id="marca"
+              placeholder="Ex.: Lattafa"
+              required
+            >
+
+          </div>
+
+          <div class="linha-3">
+
+            <div class="campo">
+
+              <label for="custo">
+                Custo de compra (R$)
+              </label>
+
+              <input
+                type="number"
+                id="custo"
+                min="0"
+                step="0.01"
+                placeholder="Ex.: 120.00"
+                required
+              >
+
+            </div>
+
+            <div class="campo">
+
+              <label for="preco">
+                Preço de venda (R$)
+              </label>
+
+              <input
+                type="number"
+                id="preco"
+                min="0"
+                step="0.01"
+                placeholder="Ex.: 189.90"
+                required
+              >
+
+            </div>
+
+            <div class="campo">
+
+              <label for="estoque">
+                Estoque inicial
+              </label>
+
+              <input
+                type="number"
+                id="estoque"
+                min="0"
+                step="1"
+                value="0"
+                required
+              >
+
+              <div
+                class="status"
+                id="status-estoque"
+              >
+                Disponibilidade será definida pelo estoque.
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="linha-3">
+
+            <div class="campo">
+
+              <label for="estoque-minimo">
+                Estoque mínimo
+              </label>
+
+              <input
+                type="number"
+                id="estoque-minimo"
+                min="0"
+                step="1"
+                value="2"
+                required
+              >
+
+            </div>
+
+            <div class="campo">
+
+              <label for="ml">
+                Volume (ml)
+              </label>
+
+              <input
+                type="number"
+                id="ml"
+                min="1"
+                step="1"
+                required
+              >
+
+            </div>
+
+            <div class="campo">
+
+              <label for="categoria">
+                Categoria
+              </label>
+
+              <select
+                id="categoria"
+                required
+              >
+
+                <option value="">
+                  Selecione
+                </option>
+
+                <option value="Masculino">
+                  Masculino
+                </option>
+
+                <option value="Feminino">
+                  Feminino
+                </option>
+
+                <option value="Unissex">
+                  Unissex
+                </option>
+
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="campo">
+
+            <label for="descricao">
+              Descrição
+            </label>
+
+            <textarea
+              id="descricao"
+              placeholder="Descreva o perfume..."
+            ></textarea>
+
+          </div>
+
+          <div class="campo">
+
+            <label for="imagem">
+              Imagem do produto
+            </label>
+
+            <input
+              type="file"
+              id="imagem"
+              accept="image/*"
+              required
+            >
+
+            <div class="info-imagem">
+              Escolha uma foto da galeria ou tire uma foto usando a câmera.
+            </div>
+
+            <div
+              class="preview"
+              id="preview"
+            >
+
+              <img
+                id="imagem-preview"
+                alt="Pré-visualização"
+              >
+
+            </div>
+
+          </div>
+
+          <button
+            type="submit"
+            class="btn"
+            id="btn-cadastrar"
+          >
+            Cadastrar produto
+          </button>
+
+          <div
+            class="aviso"
+            id="aviso"
+          ></div>
+
+        </form>
+
+      </section>
+
+      <section class="card">
+
+        <h3>
+          Produtos cadastrados
+        </h3>
+
+        <div id="lista-produtos">
+          Carregando produtos...
+        </div>
+
+      </section>
+
+    </section>
+
+    <!-- =================================================
+         ESTOQUE
+         ================================================= -->
+
+    <section
+      class="secao-admin"
+      id="secao-estoque"
+    >
+
+      <section class="card">
+
+        <h3>
+          Gestão de estoque
+        </h3>
+
+        <p class="vazio">
+          Use "Registrar venda" para retirar produtos do estoque
+          e "Registrar entrada" para adicionar produtos.
+        </p>
+
+        <div id="resumo-estoque">
+          Carregando...
+        </div>
+
+      </section>
+
+    </section>
+
+    <!-- =================================================
+         HISTÓRICO
+         ================================================= -->
+
+    <section
+      class="secao-admin"
+      id="secao-historico"
+    >
+
+      <section class="card">
+
+        <h3>
+          Histórico de movimentações
+        </h3>
+
+        <div class="tabela-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Custo</th>
+                <th>Venda</th>
+                <th>Lucro</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody id="tabela-historico">
+
+              <tr>
+                <td colspan="7">
+                  Carregando...
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </section>
+
+    <!-- =================================================
+         DEVEDORES
+         ================================================= -->
+
+    <section
+      class="secao-admin"
+      id="secao-devedores"
+    >
+
+      <section class="card">
+
+        <h3>
+          Controle de devedores
+        </h3>
+
+        <div id="resumo-devedores">
+          Carregando...
+        </div>
+
+        <div id="lista-devedores">
+          Carregando...
+        </div>
+
+      </section>
+
+    </section>
+
+  </main>
+
+</section>
+
+<!-- =====================================================
+     MODAL EDITAR
+     ===================================================== -->
+
+<div
+  class="modal"
+  id="modal-editar"
+>
+
+  <div class="modal-conteudo">
+
+    <h3>
+      Editar produto
+    </h3>
+
+    <form id="form-editar">
+
+      <input
+        type="hidden"
+        id="editar-id"
+      >
+
+      <div class="campo">
+
+        <label for="editar-nome">
+          Nome do perfume
+        </label>
+
+        <input
+          type="text"
+          id="editar-nome"
+          required
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label for="editar-marca">
+          Marca
+        </label>
+
+        <input
+          type="text"
+          id="editar-marca"
+          required
+        >
+
+      </div>
+
+      <div class="linha-3">
+
+        <div class="campo">
+
+          <label for="editar-custo">
+            Custo de compra (R$)
+          </label>
+
+          <input
+            type="number"
+            id="editar-custo"
+            min="0"
+            step="0.01"
+            required
+          >
+
+        </div>
+
+        <div class="campo">
+
+          <label for="editar-preco">
+            Preço de venda (R$)
+          </label>
+
+          <input
+            type="number"
+            id="editar-preco"
+            min="0"
+            step="0.01"
+            required
+          >
+
+        </div>
+
+        <div class="campo">
+
+          <label for="editar-estoque">
+            Estoque
+          </label>
+
+          <input
+            type="number"
+            id="editar-estoque"
+            min="0"
+            step="1"
+            required
+          >
+
+        </div>
+
+      </div>
+
+      <div class="linha-3">
+
+        <div class="campo">
+
+          <label for="editar-estoque-minimo">
+            Estoque mínimo
+          </label>
+
+          <input
+            type="number"
+            id="editar-estoque-minimo"
+            min="0"
+            step="1"
+            required
+          >
+
+        </div>
+
+        <div class="campo">
+
+          <label for="editar-ml">
+            Volume (ml)
+          </label>
+
+          <input
+            type="number"
+            id="editar-ml"
+            min="1"
+            step="1"
+            required
+          >
+
+        </div>
+
+        <div class="campo">
+
+          <label for="editar-categoria">
+            Categoria
+          </label>
+
+          <select
+            id="editar-categoria"
+            required
+          >
+
+            <option value="Masculino">
+              Masculino
+            </option>
+
+            <option value="Feminino">
+              Feminino
+            </option>
+
+            <option value="Unissex">
+              Unissex
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="campo">
+
+        <label for="editar-descricao">
+          Descrição
+        </label>
+
+        <textarea
+          id="editar-descricao"
+        ></textarea>
+
+      </div>
+
+      <div class="campo">
+
+        <label for="editar-imagem">
+          Nova imagem
+        </label>
+
+        <input
+          type="file"
+          id="editar-imagem"
+          accept="image/*"
+        >
+
+        <div
+          class="preview"
+          id="editar-preview"
+        >
+
+          <img
+            id="editar-imagem-preview"
+            alt="Imagem"
+          >
+
+        </div>
+
+      </div>
+
+      <div class="modal-botoes">
+
+        <button
+          type="button"
+          class="btn-cancelar"
+          id="btn-cancelar"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="btn"
+        >
+          Salvar alterações
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     MODAL VENDA
+     ===================================================== -->
+
+<div
+  class="modal"
+  id="modal-venda"
+>
+
+  <div class="modal-conteudo">
+
+    <h3>
+      Registrar venda
+    </h3>
+
+    <p
+      id="venda-produto-nome"
+      style="margin-bottom:20px;color:#777;"
+    ></p>
+
+    <form id="form-venda">
+
+      <input
+        type="hidden"
+        id="venda-id"
+      >
+
+      <div class="linha">
+
+        <div class="campo">
+
+          <label for="venda-cliente">
+            Nome do cliente
+          </label>
+
+          <input
+            type="text"
+            id="venda-cliente"
+            placeholder="Nome completo"
+            required
+          >
+
+        </div>
+
+        <div class="campo">
+
+          <label for="venda-telefone">
+            WhatsApp / telefone
+          </label>
+
+          <input
+            type="tel"
+            id="venda-telefone"
+            placeholder="(89) 99999-9999"
+          >
+
+        </div>
+
+      </div>
+
+      <div class="campo">
+
+        <label>
+          Estoque disponível
+        </label>
+
+        <input
+          type="text"
+          id="venda-estoque-disponivel"
+          readonly
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label for="venda-quantidade">
+          Quantidade vendida
+        </label>
+
+        <input
+          type="number"
+          id="venda-quantidade"
+          min="1"
+          step="1"
+          required
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label for="venda-preco">
+          Preço de venda por unidade (R$)
+        </label>
+
+        <input
+          type="number"
+          id="venda-preco"
+          min="0"
+          step="0.01"
+          required
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label for="venda-custo">
+          Custo por unidade (R$)
+        </label>
+
+        <input
+          type="number"
+          id="venda-custo"
+          min="0"
+          step="0.01"
+          required
+        >
+
+      </div>
+
+      <div class="parcelamento-box">
+
+        <h4>Pagamento</h4>
+
+        <div class="linha">
+
+          <div class="campo">
+
+            <label for="venda-parcelas">
+              Número de parcelas
+            </label>
+
+            <select id="venda-parcelas" required>
+              <option value="1">1x — À vista</option>
+              <option value="2">2x</option>
+              <option value="3">3x</option>
+              <option value="4">4x</option>
+              <option value="5">5x</option>
+            </select>
+
+          </div>
+
+          <div class="campo">
+
+            <label for="venda-primeiro-vencimento">
+              Primeiro vencimento
+            </label>
+
+            <input
+              type="date"
+              id="venda-primeiro-vencimento"
+              required
+            >
+
+          </div>
+
+        </div>
+
+        <p class="status" id="venda-info-parcelamento">
+          1x: pagamento registrado como pago no momento da venda.
+        </p>
+
+        <p style="margin-top:8px;">
+          Valor por parcela: <strong id="venda-valor-parcela">R$ 0,00</strong>
+        </p>
+
+      </div>
+
+      <div
+        class="card"
+        style="background:#f8f6f2;box-shadow:none;margin-bottom:20px;"
+      >
+
+        <strong>Resumo da venda</strong>
+
+        <p style="margin-top:10px;">
+          Total recebido:
+          <strong id="venda-total">R$ 0,00</strong>
+        </p>
+
+        <p style="margin-top:5px;">
+          Custo total:
+          <strong id="venda-total-custo">R$ 0,00</strong>
+        </p>
+
+        <p style="margin-top:5px;">
+          Lucro:
+          <strong
+            id="venda-lucro"
+            style="color:#26733a;"
+          >
+            R$ 0,00
+          </strong>
+        </p>
+
+      </div>
+
+      <div class="modal-botoes">
+
+        <button
+          type="button"
+          class="btn-cancelar"
+          id="btn-cancelar-venda"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="btn"
+          id="btn-confirmar-venda"
+        >
+          Confirmar venda
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     MODAL ENTRADA
+     ===================================================== -->
+
+<div
+  class="modal"
+  id="modal-entrada"
+>
+
+  <div class="modal-conteudo">
+
+    <h3>
+      Registrar entrada
+    </h3>
+
+    <p
+      id="entrada-produto-nome"
+      style="margin-bottom:20px;color:#777;"
+    ></p>
+
+    <form id="form-entrada">
+
+      <input
+        type="hidden"
+        id="entrada-id"
+      >
+
+      <div class="campo">
+
+        <label for="entrada-quantidade">
+          Quantidade recebida
+        </label>
+
+        <input
+          type="number"
+          id="entrada-quantidade"
+          min="1"
+          step="1"
+          required
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label for="entrada-custo">
+          Custo por unidade (R$)
+        </label>
+
+        <input
+          type="number"
+          id="entrada-custo"
+          min="0"
+          step="0.01"
+          required
+        >
+
+      </div>
+
+      <div class="campo">
+
+        <label for="entrada-observacao">
+          Observação
+        </label>
+
+        <textarea
+          id="entrada-observacao"
+          placeholder="Ex.: Compra do fornecedor..."
+          style="min-height:80px;"
+        ></textarea>
+
+      </div>
+
+      <div class="modal-botoes">
+
+        <button
+          type="button"
+          class="btn-cancelar"
+          id="btn-cancelar-entrada"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="btn"
+        >
+          Confirmar entrada
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<script type="module" src="admin-script.js"></script>
+
+</body>
+</html>

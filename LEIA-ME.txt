@@ -1,0 +1,8 @@
+DADAL TAILANDESA - ESTRUTURA
+
+index.html + style.css + script.js = catálogo público.
+admin.html + admin-style.css + admin-script.js = painel administrativo.
+
+Coloque todos os 6 arquivos na mesma pasta. O botão Admin do catálogo abre admin.html.
+
+O painel usa Firebase/Firestore e Firebase Authentication. Para o parcelamento, as parcelas são gravadas na coleção "parcelas" do Firestore.
