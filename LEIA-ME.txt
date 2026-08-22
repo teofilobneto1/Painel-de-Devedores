@@ -1,4 +1,4 @@
-DADAL TAILANDESA - ESTRUTURA
+DADAL TAILANDESAS - ESTRUTURA
 
 index.html + style.css + script.js = catálogo público.
 admin.html + admin-style.css + admin-script.js = painel administrativo.
