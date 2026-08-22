@@ -48,8 +48,7 @@ img {
 .header {
   background: var(--cor-preto);
   border-bottom: 1px solid #222;
-  position: sticky;
-  top: 0;
+  position: relative; /* Rola normalmente junto com a página */
   z-index: 100;
   box-shadow: 0 2px 12px rgba(0,0,0,.2);
   width: 100%;
